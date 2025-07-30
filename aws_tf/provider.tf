@@ -12,3 +12,12 @@ provider "aws" {
 }
 
 provider "random" {}
+
+
+terraform {
+  backend "s3" {
+    bucket = "tf-bkd-521475841"
+    key    = "tf-backend"
+    region = "ap-south-1"
+  }
+}
