@@ -6,9 +6,9 @@ on:
   push:
     branches: [ "main" ]
 
-env:
-  BUCKET_NAME : "githubsample-645373"
-  AWS_REGION : "ap-south-1"
+# env:
+#   BUCKET_NAME : "githubsample-645373"
+    AWS_REGION : "ap-south-1"
 # permission can be added at job level or workflow level
 permissions:
   id-token: write   # This is required for requesting the JWT
@@ -24,8 +24,9 @@ jobs:
       - name: Configure AWS credentials DEV env
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID_1_DEV }}:role/${{ env.AWS_REGION_1_DEV_ROLE_NAME }}
-          aws-region: ${{ env.AWS_REGION_1_DEV }}
+          role-to-assume: arn:aws:iam::087843402575:role/github_oidc_role
+          aws-region: ${{ env.AWS_REGION }}
+
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v3
@@ -48,5 +49,4 @@ jobs:
       - name: Apply Terraform
         if: success()
         working-directory: aws_tf
-        #run: terraform apply -auto-approve tfplan-${{ github.sha }}
         run: terraform destroy -auto-approve
