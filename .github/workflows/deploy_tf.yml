@@ -2,15 +2,16 @@
 # The workflow Creates static website using aws s3
 name: AWS Terraform Deploy
 
-# on:
-#   push:
-#     branches: [ "main" ]
-#     workflow_dispatch:
 on:
-  pull_request:
-    branches: [ "main" ]
-    types: [ "closed" ]
-workflow_dispatch:
+  push:
+    branches: [ "new_branch" ]
+    workflow_dispatch:
+# on:
+#   pull_request:
+#     branches: [ "main" ]
+#     types: [ "closed" ]
+#     workflow_dispatch:
+
 
 env:
     AWS_REGION : "ap-south-1"
