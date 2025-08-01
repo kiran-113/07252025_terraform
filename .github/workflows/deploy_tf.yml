@@ -43,4 +43,4 @@ jobs:
       - name: Apply Terraform
         if: success()
         working-directory: aws_tf
-        run: terraform apply -auto-approve
+        run: terraform destroy -auto-approve
