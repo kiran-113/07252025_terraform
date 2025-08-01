@@ -5,7 +5,8 @@ name: AWS Terraform Deploy
 on:
   push:
     branches: [ "new_branch" ]
-    workflow_dispatch:
+on:
+  workflow_dispatch:
 # on:
 #   pull_request:
 #     branches: [ "main" ]
